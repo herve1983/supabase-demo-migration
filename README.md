@@ -235,3 +235,20 @@ service_role key: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZ
 ```
 
 If everything works fine, going to [localhost:54323](localhost:54323) should show you :  ![Supabase studio](public/supabase_studio_running_locally.png)
+
+### Connect to PostgreSQL
+
+Credentials to be used:
+
+- Username: postgres
+- Password: postgres
+- port: 54322
+
+#### Using Webstorm
+
+- Create a new PostgreSQL database connection
+![Create connection](public/db_connection_creation.png)
+- Successful connection
+![Create connection](public/db_connection_successful.png)
+- Schema selection
+![Create connection](public/db_schema_selection.png)
