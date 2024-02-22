@@ -252,3 +252,124 @@ Credentials to be used:
 ![Create connection](public/db_connection_successful.png)
 - Schema selection
 ![Create connection](public/db_schema_selection.png)
+
+### Migration
+
+#### Create a new table
+
+##### <em>Using CLI</em>
+
+- In the terminal run the command:
+
+```text
+supabase migration new init_schema
+```
+
+Now a folder called "migrations" with a .sql file will be created
+
+- Write sql instructions to create a table inside the .sql file
+
+```postgresql
+create table
+    users (
+          id bigint primary key generated always as identity not null,
+          firstName varchar,
+          lastName varchar,
+          email varchar not null unique,
+          password varchar not null,
+          created_at timestamptz not null default now(),
+          updated_at timestamptz not null default now()
+);
+```
+
+#### Alter table
+
+##### <em>Using Editor</em>
+
+- Go to supabase studio and add a new column called: avatar
+
+![Avatar](public/db_add_column_using_editor.png)
+
+##### <em>Apply changes locally using CLI</em>
+
+- Run the command 
+
+```text
+supabase db diff --use-migra -f alter_users_add_columns --schema public 
+```
+
+Results: 
+
+```text
+Creating shadow database...
+Setting up initial schema...
+Applying migration 20240221204215_init_schema.sql...
+Diffing schemas: public
+Finished supabase db diff on branch feature/MIGR-init-script.
+
+WARNING: The diff tool is not foolproof, so you may need to manually rearrange and modify the generated migration.
+Run supabase db reset to verify that the new migration does not generate errors.
+
+```
+
+Ensure that everything is fine by running :
+
+```text
+supabase db reset
+```
+
+Results:
+
+```text
+supabase db reset
+Resetting local database...
+Recreating database...
+Setting up initial schema...
+Applying migration 20240221204215_init_schema.sql...
+Applying migration 20240222022049_alter_users_add_columns.sql...
+Seeding data supabase/seed.sql...
+Restarting containers...
+Finished supabase db reset on branch feature/MIGR-init-script.
+```
+
+#### Run a migration file
+
+Run in the terminal the command:
+
+```text
+supabase db reset
+```
+Results:
+
+```text
+Resetting local database...
+Recreating database...
+Setting up initial schema...
+Applying migration 20240221204215_init_schema.sql...
+Seeding data supabase/seed.sql...
+Restarting containers...
+Finished supabase db reset on branch feature/MIGR-init-script.
+```
+
+To verify to Supabase studio
+- on the left, select database
+- on the row table with the name users, click on the 3 vertical dot on the right and select 'view table'
+- on the top right click on definition
+
+![View table](public/check_table_definition.png)
+
+### Managing environment
+
+Make sure that the following variable exists in your github project :
+
+- SUPABASE_ACCESS_TOKEN: The 'Access Tokens' is generated at the dashboard level(see the pictures: access_token and access_token_creation)
+- PRODUCTION_PROJECT_ID: is the production project ID (demo-migration-prod)
+- PRODUCTION_DB_PASSWORD: is the production db password (the one used when creating the project)
+- STAGING_PROJECT_ID: is the staging project ID (demo-migration)
+- STAGING_DB_PASSWORD: is the staging db password (the one used when creating the project)
+
+I should look like this: 
+
+![GithubActions variable](public/github-actions-variables.png)
+
+Look at this [Link](https://www.youtube.com/watch?v=rOLyOsBR1Uc) to see how to create those variables
