@@ -252,3 +252,57 @@ Credentials to be used:
 ![Create connection](public/db_connection_successful.png)
 - Schema selection
 ![Create connection](public/db_schema_selection.png)
+
+### Migration
+
+#### Create a new table
+
+##### <em>Using CLI</em>
+
+- In the terminal run the command:
+
+```text
+supabase migration new init_schema
+```
+
+Now a folder called "migrations" with a .sql file will be created
+
+- Write sql instructions to create a table inside the .sql file
+
+```postgresql
+create table
+    users (
+          id bigint primary key generated always as identity not null,
+          firstName varchar,
+          lastName varchar,
+          email varchar not null unique,
+          password varchar not null,
+          created_at timestamptz not null default now(),
+          updated_at timestamptz not null default now()
+);
+```
+#### Run a migration file
+
+Run in the terminal the command:
+
+```text
+supabase db reset
+```
+Results:
+
+```text
+Resetting local database...
+Recreating database...
+Setting up initial schema...
+Applying migration 20240221204215_init_schema.sql...
+Seeding data supabase/seed.sql...
+Restarting containers...
+Finished supabase db reset on branch feature/MIGR-init-script.
+```
+
+To verify to Supabase studio
+- on the left, select database
+- on the row table with the name users, click on the 3 vertical dot on the right and select 'view table'
+- on the top right click on definition
+
+![View table](public/check_table_definition.png)
