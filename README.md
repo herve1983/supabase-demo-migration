@@ -357,3 +357,19 @@ To verify to Supabase studio
 - on the top right click on definition
 
 ![View table](public/check_table_definition.png)
+
+### Managing environment
+
+Make sure that the following variable exists in your github project :
+
+- SUPABASE_ACCESS_TOKEN: The 'Access Tokens' is generated at the dashboard level(see the pictures: access_token and access_token_creation)
+- PRODUCTION_PROJECT_ID: is the production project ID (demo-migration-prod)
+- PRODUCTION_DB_PASSWORD: is the production db password (the one used when creating the project)
+- STAGING_PROJECT_ID: is the staging project ID (demo-migration)
+- STAGING_DB_PASSWORD: is the staging db password (the one used when creating the project)
+
+I should look like this: 
+
+![GithubActions variable](public/github-actions-variables.png)
+
+Look at this [Link](https://www.youtube.com/watch?v=rOLyOsBR1Uc) to see how to create those variables
