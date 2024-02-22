@@ -281,6 +281,57 @@ create table
           updated_at timestamptz not null default now()
 );
 ```
+
+#### Alter table
+
+##### <em>Using Editor</em>
+
+- Go to supabase studio and add a new column called: avatar
+
+![Avatar](public/db_add_column_using_editor.png)
+
+##### <em>Apply changes locally using CLI</em>
+
+- Run the command 
+
+```text
+supabase db diff --use-migra -f alter_users_add_columns --schema public 
+```
+
+Results: 
+
+```text
+Creating shadow database...
+Setting up initial schema...
+Applying migration 20240221204215_init_schema.sql...
+Diffing schemas: public
+Finished supabase db diff on branch feature/MIGR-init-script.
+
+WARNING: The diff tool is not foolproof, so you may need to manually rearrange and modify the generated migration.
+Run supabase db reset to verify that the new migration does not generate errors.
+
+```
+
+Ensure that everything is fine by running :
+
+```text
+supabase db reset
+```
+
+Results:
+
+```text
+supabase db reset
+Resetting local database...
+Recreating database...
+Setting up initial schema...
+Applying migration 20240221204215_init_schema.sql...
+Applying migration 20240222022049_alter_users_add_columns.sql...
+Seeding data supabase/seed.sql...
+Restarting containers...
+Finished supabase db reset on branch feature/MIGR-init-script.
+```
+
 #### Run a migration file
 
 Run in the terminal the command:
