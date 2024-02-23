@@ -388,3 +388,8 @@ Useful links :
 - [ignore](https://prettier.io/docs/en/ignore)
 - [configuration](https://prettier.io/docs/en/configuration)
 - [IDE integration webstorm](https://prettier.io/docs/en/webstorm)
+
+
+### Useful tips
+
+- See [here](https://www.baeldung.com/linux/create-folder-path-file#:~:text=Using%20mkdir%20and%20touch%20Commands,touch%20command%20creates%20a%20file.) how to create a file inside a folder if the folder do not exists in one command without error
