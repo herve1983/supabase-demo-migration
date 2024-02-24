@@ -393,3 +393,5 @@ Useful links :
 ### Useful tips
 
 - See [here](https://www.baeldung.com/linux/create-folder-path-file#:~:text=Using%20mkdir%20and%20touch%20Commands,touch%20command%20creates%20a%20file.) how to create a file inside a folder if the folder do not exists in one command without error
+- See [here](https://www.postgresql.org/docs/current/datatype-enum.html#DATATYPE-ENUM-DECLARATION) how to create type(ENUM) in PostgreSQL
+- See [here](https://www.postgresql.org/docs/current/sql-droptype.html) how to drop type(ENUM) in PostgreSQL
