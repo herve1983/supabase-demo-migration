@@ -102,7 +102,7 @@ export type Database = {
       [_ in never]: never
     }
     Enums: {
-      [_ in never]: never
+      room_type: "SUITE" | "NOT_SUITE"
     }
     CompositeTypes: {
       [_ in never]: never

@@ -1,0 +1,1 @@
+CREATE TYPE room_type AS ENUM ('SUITE', 'NOT_SUITE');
