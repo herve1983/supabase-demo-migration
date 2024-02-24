@@ -15,6 +15,12 @@ jobs:
         with:
           version: latest
 
+      - name: Supabase version
+        run: supabase --version
+
+      - name: Start Supabase init
+        run: supabase init
+
       - name: Start Supabase local development setup
         run: supabase start
 
