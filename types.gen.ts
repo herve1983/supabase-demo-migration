@@ -39,6 +39,7 @@ export type Database = {
           created_at: string
           description: string | null
           id: number
+          is_available: boolean
           name: string
           updated_at: string
         }
@@ -46,6 +47,7 @@ export type Database = {
           created_at?: string
           description?: string | null
           id?: never
+          is_available?: boolean
           name: string
           updated_at?: string
         }
@@ -53,6 +55,7 @@ export type Database = {
           created_at?: string
           description?: string | null
           id?: never
+          is_available?: boolean
           name?: string
           updated_at?: string
         }
